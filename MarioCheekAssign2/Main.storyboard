@@ -99,7 +99,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="CHC-Q3-afL" kind="presentation" id="uHA-SQ-l4t"/>
+                                    <segue destination="CHC-Q3-afL" kind="presentation" identifier="toMealPlanner" id="qfy-V1-0Jd"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaz-3I-kZx">
@@ -130,10 +130,10 @@
             </objects>
             <point key="canvasLocation" x="1052.6717557251909" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--MealPlannerViewController-->
         <scene sceneID="8Rf-NZ-Q1P">
             <objects>
-                <viewController id="CHC-Q3-afL" sceneMemberID="viewController">
+                <viewController title="MealPlannerViewController" id="CHC-Q3-afL" customClass="ViewController" customModule="MarioCheekAssign2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bV8-60-U6y">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,7 +240,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Waiting for input" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tKs-wn-p0e">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Waiting for input" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tKs-wn-p0e">
                                         <rect key="frame" x="0.0" y="33.333333333333314" width="361" height="33.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -251,7 +251,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tap Simulate Day to see results" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8WS-HN-ScE">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tap Simulate Day to see results" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8WS-HN-ScE">
                                         <rect key="frame" x="0.0" y="100" width="361" height="33.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -262,7 +262,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Extra steps to balance: 0 (~0.0 miles)" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yX6-Dh-9Kt">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Extra steps to balance: 0 (~0.0 miles)" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yX6-Dh-9Kt">
                                         <rect key="frame" x="0.0" y="166.66666666666669" width="361" height="33.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -290,6 +290,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="simulateDay:" destination="CHC-Q3-afL" eventType="touchUpInside" id="kM8-BP-1VY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7Sy-PH-18V"/>
@@ -307,6 +310,15 @@
                             <constraint firstItem="iad-Ci-q9C" firstAttribute="centerY" secondItem="bV8-60-U6y" secondAttribute="centerY" constant="-18.5" id="yE4-ZH-j3C"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityInMins" destination="ABE-9t-pEo" id="Vtd-P3-Shs"/>
+                        <outlet property="activityVsEating" destination="tKs-wn-p0e" id="gYR-rx-3Ha"/>
+                        <outlet property="caloriesFromMeals" destination="gB5-GW-d5z" id="3QT-sI-4qe"/>
+                        <outlet property="caloriesFromSnacks" destination="0Ic-rr-dYE" id="cyI-ZK-kuw"/>
+                        <outlet property="stepsFromToday" destination="s4S-Kd-6xo" id="1qU-WC-rfq"/>
+                        <outlet property="stepsRemaining" destination="yX6-Dh-9Kt" id="zLe-Fs-H9L"/>
+                        <outlet property="weightChange" destination="8WS-HN-ScE" id="I3w-eK-EvN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8p-yu-ITC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
