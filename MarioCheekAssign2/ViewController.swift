@@ -1,9 +1,5 @@
-//
 //  ViewController.swift
 //  MarioCheekAssign2
-//
-//  Created by Mondrelle Cheek on 2/21/26.
-//
 
 import UIKit
 
@@ -32,7 +28,6 @@ class ViewController: UIViewController {
         let activityMinutes = Double(activityInMins.text ?? "0") ?? 0
         //Burn .05 kcal every step, 8 kcals every minute
         let totalBurn = 1800 + (totalSteps * 0.05) + (activityMinutes * 8)
-        
         //Lets determine the balance between activity and calories
         let balance = totalCalories - totalBurn
         //Display it
@@ -41,25 +36,31 @@ class ViewController: UIViewController {
         }else {
             activityVsEating.text = "You burned more than you ate today!"
         }
-        
         //Lets determine the weight change
         let lbs = abs(balance) / 3500.0
         //Display it
-        //weightChange.text = String
-        
-        activityVsEating.text = ""
-        weightChange.text = ""
-        stepsRemaining.text = ""
-        
-        
-        
-        
+        if (balance > 0){
+            weightChange.text = String(format: "You will gain %.2f lb today.", lbs)
+        }else if balance < 0 {
+            weightChange.text = String(format: "You will lose %.2f lb today.", lbs)
+        }else {
+            weightChange.text = String(format: "You have neither gained nor lost weight today.")
+        }
+        //Lets determine steps remaining
+        var extraSteps = 0.0
+        var tempBalance = balance
+        while tempBalance > 0 {
+            tempBalance -= 0.05
+            extraSteps += 1
+        }
+        //Convert the steps into miles
+        let miles = extraSteps / 2000.0
+        //Display it
+        stepsRemaining.text = String(format:"Extra steps:  %.0f (~%.1f miles)", extraSteps, miles)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 
